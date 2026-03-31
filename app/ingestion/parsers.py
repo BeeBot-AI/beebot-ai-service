@@ -1,6 +1,6 @@
 import tempfile
 import os
-from langchain_community.document_loaders import PyMuPDFLoader, Docx2txtLoader
+from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
 from langchain_core.documents import Document
 
 def parse_file(file_bytes: bytes, filename: str) -> list[Document]:
@@ -17,7 +17,7 @@ def parse_file(file_bytes: bytes, filename: str) -> list[Document]:
 
     try:
         if name_lower.endswith(".pdf"):
-            loader = PyMuPDFLoader(temp_path)
+            loader = PyPDFLoader(temp_path)
             docs = loader.load()
             
         elif name_lower.endswith(".docx"):
