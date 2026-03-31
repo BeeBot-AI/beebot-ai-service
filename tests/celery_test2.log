@@ -1,0 +1,156 @@
+ 
+ -------------- celery@dhayas-asus v5.6.2 (recovery)
+--- ***** ----- 
+-- ******* ---- Linux-6.17.0-14-generic-x86_64-with-glibc2.39 2026-03-05 22:23:19
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         beebots_worker:0x785b787ef020
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 16 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . app.workers.tasks.process_document_task
+
+[2026-03-05 22:23:24,552: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-03-05 22:23:24,554: INFO/MainProcess] mingle: searching for neighbors
+[2026-03-05 22:23:25,568: INFO/MainProcess] mingle: all alone
+[2026-03-05 22:23:25,576: INFO/MainProcess] celery@dhayas-asus ready.
+[2026-03-05 22:23:25,579: INFO/MainProcess] Task app.workers.tasks.process_document_task[e16e0420-decb-419f-a4da-42d522a508ff] received
+[2026-03-05 22:23:25,580: INFO/MainProcess] Task app.workers.tasks.process_document_task[40677192-2982-42cd-a998-69ed60ce8d9a] received
+[2026-03-05 22:23:29,474: ERROR/ForkPoolWorker-15] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:23:29,477: INFO/ForkPoolWorker-15] Task app.workers.tasks.process_document_task[40677192-2982-42cd-a998-69ed60ce8d9a] succeeded in 3.8963701389998278s: {'status': 'success', 'chunks_added': 1}
+[2026-03-05 22:23:30,969: ERROR/ForkPoolWorker-14] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:23:30,972: INFO/ForkPoolWorker-14] Task app.workers.tasks.process_document_task[e16e0420-decb-419f-a4da-42d522a508ff] succeeded in 5.392410517999906s: {'status': 'success', 'chunks_added': 1}
+[2026-03-05 22:28:25,867: INFO/MainProcess] Task app.workers.tasks.process_document_task[efcf9330-9ba9-45fb-bea9-f0ba39055968] received
+[2026-03-05 22:28:28,938: INFO/ForkPoolWorker-14] Task app.workers.tasks.process_document_task[efcf9330-9ba9-45fb-bea9-f0ba39055968] succeeded in 3.068990159999885s: {'status': 'success', 'chunks_added': 6}
+
+Restarting celery worker (/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/bin/celery -A app.core.celery_app worker --loglevel=info)
+ 
+ -------------- celery@dhayas-asus v5.6.2 (recovery)
+--- ***** ----- 
+-- ******* ---- Linux-6.17.0-14-generic-x86_64-with-glibc2.39 2026-03-05 23:25:18
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         beebots_worker:0x74b6cb9c7e30
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 16 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . app.workers.tasks.process_document_task
+
+[2026-03-05 23:25:22,900: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-03-05 23:25:22,903: INFO/MainProcess] mingle: searching for neighbors
+[2026-03-05 23:25:23,911: INFO/MainProcess] mingle: all alone
+[2026-03-05 23:25:23,923: INFO/MainProcess] celery@dhayas-asus ready.
+[2026-03-06 00:46:09,949: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/client.py", line 1115, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/client.py", line 1159, in try_read
+    return conn.read_response(disconnect_on_error=False, push_request=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/connection.py", line 1339, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/_parsers/resp2.py", line 15, in read_response
+    result = self._read_response(disable_decoding=disable_decoding)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/_parsers/resp2.py", line 25, in _read_response
+    raw = self._buffer.readline()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/_parsers/socket.py", line 115, in readline
+    self._read_from_socket()
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/_parsers/socket.py", line 68, in _read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/connection.py", line 998, in connect_check_health
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/connection.py", line 1512, in _connect
+    raise err
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/connection.py", line 1496, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py", line 346, in start
+    blueprint.start(self)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/bootsteps.py", line 116, in start
+    step.start(parent)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py", line 788, in start
+    c.loop(*c.loop_args())
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/worker/loops.py", line 96, in asynloop
+    next(loop)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/kombu/asynchronous/hub.py", line 377, in create_loop
+    cb(*cbargs)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/kombu/transport/redis.py", line 1394, in on_readable
+    self.cycle.on_readable(fileno)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/kombu/transport/redis.py", line 579, in on_readable
+    chan.handlers[type]()
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/kombu/transport/redis.py", line 931, in _receive
+    ret.append(self._receive_one(c))
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/kombu/transport/redis.py", line 941, in _receive_one
+    response = c.parse_response()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/client.py", line 1161, in parse_response
+    response = self._execute(conn, try_read)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/client.py", line 1114, in _execute
+    response = conn.retry.call_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/retry.py", line 127, in call_with_retry
+    fail(error, failures)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/client.py", line 1111, in failure_callback
+    self._reconnect(conn, error, failure_count, start_time, command_name)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/client.py", line 1085, in _reconnect
+    conn.connect()
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/connection.py", line 976, in connect
+    self.retry.call_with_retry(
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/retry.py", line 132, in call_with_retry
+    raise error
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/connection.py", line 977, in <lambda>
+    lambda: self.connect_check_health(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/redis/connection.py", line 1022, in connect_check_health
+    raise e
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+[2026-03-06 00:46:09,957: WARNING/MainProcess] /home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:397: CPendingDeprecationWarning: 
+In Celery 5.1 we introduced an optional breaking change which
+on connection loss cancels all currently executed tasks with late acknowledgement enabled.
+These tasks cannot be acknowledged as the connection is gone, and the tasks are automatically redelivered
+back to the queue. You can enable this behavior using the worker_cancel_long_running_tasks_on_connection_loss
+setting. In Celery 5.1 it is set to False by default. The setting will be set to True by default in Celery 6.0.
+
+  warnings.warn(CANCEL_TASKS_BY_DEFAULT, CPendingDeprecationWarning)
+
+[2026-03-06 00:46:09,960: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+
+worker: Warm shutdown (MainProcess)

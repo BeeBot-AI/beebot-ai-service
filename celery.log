@@ -1,0 +1,199 @@
+ 
+ -------------- celery@dhayas-asus v5.6.2 (recovery)
+--- ***** ----- 
+-- ******* ---- Linux-6.17.0-14-generic-x86_64-with-glibc2.39 2026-03-05 22:19:15
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         beebots_worker:0x724c8987a450
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 16 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . app.workers.tasks.process_document_task
+
+[2026-03-05 22:19:19,168: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-03-05 22:19:19,170: INFO/MainProcess] mingle: searching for neighbors
+[2026-03-05 22:19:20,177: INFO/MainProcess] mingle: all alone
+[2026-03-05 22:19:20,196: INFO/MainProcess] celery@dhayas-asus ready.
+[2026-03-05 22:19:20,199: INFO/MainProcess] Task app.workers.tasks.process_document_task[0cf504d1-52db-4029-b1ea-84226d3577e9] received
+[2026-03-05 22:19:20,201: INFO/MainProcess] Task app.workers.tasks.process_document_task[9c1fa275-2bc2-4c38-a025-9b4daa64bcc5] received
+[2026-03-05 22:19:20,201: INFO/MainProcess] Task app.workers.tasks.process_document_task[f52399c3-3356-4480-868a-b77ad1408051] received
+[2026-03-05 22:19:20,202: INFO/MainProcess] Task app.workers.tasks.process_document_task[09a0858a-c58c-44ba-bf47-f9be354bd5b6] received
+[2026-03-05 22:19:21,432: ERROR/ForkPoolWorker-4] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:19:21,434: ERROR/ForkPoolWorker-3] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:19:21,442: INFO/MainProcess] Task app.workers.tasks.process_document_task[09a0858a-c58c-44ba-bf47-f9be354bd5b6] received
+[2026-03-05 22:19:21,443: INFO/MainProcess] Task app.workers.tasks.process_document_task[f52399c3-3356-4480-868a-b77ad1408051] received
+[2026-03-05 22:19:21,448: INFO/ForkPoolWorker-4] Task app.workers.tasks.process_document_task[09a0858a-c58c-44ba-bf47-f9be354bd5b6] retry: Retry in 60s: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+[2026-03-05 22:19:21,448: INFO/ForkPoolWorker-3] Task app.workers.tasks.process_document_task[f52399c3-3356-4480-868a-b77ad1408051] retry: Retry in 60s: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+[2026-03-05 22:19:44,401: INFO/MainProcess] Task app.workers.tasks.process_document_task[0cf504d1-52db-4029-b1ea-84226d3577e9] received
+[2026-03-05 22:19:44,403: INFO/ForkPoolWorker-4] Task app.workers.tasks.process_document_task[0cf504d1-52db-4029-b1ea-84226d3577e9] retry: Retry in 60s: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+[2026-03-05 22:19:44,439: ERROR/ForkPoolWorker-3] Failed to notify backend for edf76bd7-3605-4d15-b2cd-ab25c3fcae72: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:19:44,446: INFO/MainProcess] Task app.workers.tasks.process_document_task[9c1fa275-2bc2-4c38-a025-9b4daa64bcc5] received
+[2026-03-05 22:19:44,447: INFO/ForkPoolWorker-3] Task app.workers.tasks.process_document_task[9c1fa275-2bc2-4c38-a025-9b4daa64bcc5] retry: Retry in 60s: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+[2026-03-05 22:20:21,669: ERROR/ForkPoolWorker-4] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:20:21,669: ERROR/ForkPoolWorker-3] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:20:21,671: INFO/MainProcess] Task app.workers.tasks.process_document_task[f52399c3-3356-4480-868a-b77ad1408051] received
+[2026-03-05 22:20:21,672: INFO/MainProcess] Task app.workers.tasks.process_document_task[09a0858a-c58c-44ba-bf47-f9be354bd5b6] received
+[2026-03-05 22:20:21,672: INFO/ForkPoolWorker-4] Task app.workers.tasks.process_document_task[f52399c3-3356-4480-868a-b77ad1408051] retry: Retry in 60s: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+[2026-03-05 22:20:21,672: INFO/ForkPoolWorker-3] Task app.workers.tasks.process_document_task[09a0858a-c58c-44ba-bf47-f9be354bd5b6] retry: Retry in 60s: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+[2026-03-05 22:20:44,550: ERROR/ForkPoolWorker-4] Failed to notify backend for edf76bd7-3605-4d15-b2cd-ab25c3fcae72: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:20:44,555: ERROR/ForkPoolWorker-4] Task app.workers.tasks.process_document_task[9c1fa275-2bc2-4c38-a025-9b4daa64bcc5] raised unexpected: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+Traceback (most recent call last):
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/app/workers/tasks.py", line 56, in process_document_task
+    raise self.retry(exc=exc, countdown=60) # Retry after 1 min on failure
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/task.py", line 750, in retry
+    raise_with_context(exc)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/app/workers/tasks.py", line 46, in process_document_task
+    ids = vector_store.add_documents(chunks, ids=chunk_ids)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_core/vectorstores.py", line 138, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_pinecone/vectorstores.py", line 157, in add_texts
+    embeddings = self._embedding.embed_documents(chunk_texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 87, in embed_documents
+    embeddings = self.client.encode(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/sentence_transformers/SentenceTransformer.py", line 1052, in encode
+    self.to(device)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1381, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 964, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1367, in convert
+    return t.to(
+           ^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 412, in _lazy_init
+    raise RuntimeError(
+RuntimeError: Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method
+[2026-03-05 22:20:45,488: ERROR/ForkPoolWorker-3] Task app.workers.tasks.process_document_task[0cf504d1-52db-4029-b1ea-84226d3577e9] raised unexpected: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+Traceback (most recent call last):
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/app/workers/tasks.py", line 56, in process_document_task
+    raise self.retry(exc=exc, countdown=60) # Retry after 1 min on failure
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/task.py", line 750, in retry
+    raise_with_context(exc)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/app/workers/tasks.py", line 46, in process_document_task
+    ids = vector_store.add_documents(chunks, ids=chunk_ids)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_core/vectorstores.py", line 138, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_pinecone/vectorstores.py", line 157, in add_texts
+    embeddings = self._embedding.embed_documents(chunk_texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 87, in embed_documents
+    embeddings = self.client.encode(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/sentence_transformers/SentenceTransformer.py", line 1052, in encode
+    self.to(device)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1381, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 964, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1367, in convert
+    return t.to(
+           ^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 412, in _lazy_init
+    raise RuntimeError(
+RuntimeError: Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method
+[2026-03-05 22:21:22,447: ERROR/ForkPoolWorker-3] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:21:22,452: ERROR/ForkPoolWorker-3] Task app.workers.tasks.process_document_task[f52399c3-3356-4480-868a-b77ad1408051] raised unexpected: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+Traceback (most recent call last):
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/trace.py", line 479, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/trace.py", line 779, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/app/workers/tasks.py", line 56, in process_document_task
+    raise self.retry(exc=exc, countdown=60) # Retry after 1 min on failure
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/celery/app/task.py", line 750, in retry
+    raise_with_context(exc)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/app/workers/tasks.py", line 46, in process_document_task
+    ids = vector_store.add_documents(chunks, ids=chunk_ids)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_core/vectorstores.py", line 138, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_pinecone/vectorstores.py", line 157, in add_texts
+    embeddings = self._embedding.embed_documents(chunk_texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 87, in embed_documents
+    embeddings = self.client.encode(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/sentence_transformers/SentenceTransformer.py", line 1052, in encode
+    self.to(device)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1381, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 964, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1367, in convert
+    return t.to(
+           ^^^^^
+  File "/home/dhayanithi-anandan/K/Pro/BeeBot/ai-service/venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 412, in _lazy_init
+    raise RuntimeError(
+RuntimeError: Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method
+[2026-03-05 22:21:22,678: ERROR/ForkPoolWorker-4] Failed to notify backend for api-call-test-source: 404 Client Error: Not Found for url: http://localhost:5000/api/knowledge/webhook/status
+[2026-03-05 22:21:22,681: INFO/MainProcess] Task app.workers.tasks.process_document_task[09a0858a-c58c-44ba-bf47-f9be354bd5b6] received
+[2026-03-05 22:21:22,682: INFO/ForkPoolWorker-4] Task app.workers.tasks.process_document_task[09a0858a-c58c-44ba-bf47-f9be354bd5b6] retry: Retry in 60s: RuntimeError("Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method")
+
+worker: Warm shutdown (MainProcess)
+[2026-03-05 22:21:53,576: WARNING/MainProcess] Restoring 1 unacknowledged message(s)
