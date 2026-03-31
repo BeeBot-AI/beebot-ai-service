@@ -12,12 +12,13 @@ ALLOWED_EXTENSIONS = {".pdf", ".txt", ".docx"}
 
 @router.post("/knowledge/upload-file")
 async def upload_file_endpoint(
+    background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     business_id: str = Form(...),
     source_id: str = Form("")
 ):
     """
-    Accepts multipart file, validates, and dispatches to Celery Background Worker.
+    Accepts multipart file, validates, and dispatches to FastAPI Background Tasks.
     Returns immediately to keep the API ultra-responsive.
     """
     filename = file.filename
@@ -28,9 +29,9 @@ async def upload_file_endpoint(
 
     file_bytes = await file.read()
     
-    # 🚨 Dispatch to Celery Worker 🚨
-    # Use delay() to send to Redis queue
-    process_document_task.delay(
+    # 🚨 Dispatch to FastAPI Background Tasks 🚨
+    background_tasks.add_task(
+        process_document_task,
         file_bytes=file_bytes,
         filename=filename,
         business_id=business_id,
@@ -40,7 +41,7 @@ async def upload_file_endpoint(
     
     return {
         "success": True, 
-        "message": "File processing dispatched to worker queue.",
+        "message": "File processing dispatched to background tasks.",
         "source_id": source_id
     }
 
@@ -67,19 +68,20 @@ class ProcessRequest(BaseModel):
     source_id: str = ""
 
 @router.post("/knowledge/process")
-async def process_text_endpoint(req: ProcessRequest):
+async def process_text_endpoint(req: ProcessRequest, background_tasks: BackgroundTasks):
     """Enqueue raw text / FAQ for async processing."""
     if not req.text or not req.business_id:
         raise HTTPException(status_code=400, detail="Missing text or business_id")
         
-    process_document_task.delay(
+    background_tasks.add_task(
+        process_document_task,
         file_bytes=req.text.encode("utf-8"),
         filename="text.txt", # Treat as txt
         business_id=req.business_id,
         source=req.source,
         source_id=req.source_id
     )
-    return {"success": True, "message": "Text processing enqueued", "source_id": req.source_id}
+    return {"success": True, "message": "Text processing enqueued via background tasks", "source_id": req.source_id}
 
 
 # --- URL Scraping Ingestion --- #
@@ -89,7 +91,7 @@ class UrlRequest(BaseModel):
     source_id: str = ""
 
 @router.post("/knowledge/url")
-async def process_url_endpoint(req: UrlRequest):
+async def process_url_endpoint(req: UrlRequest, background_tasks: BackgroundTasks):
     """Scrape URL and enqueue text for async processing."""
     if not req.url or not req.business_id:
         raise HTTPException(status_code=400, detail="Missing url or business_id")
@@ -105,14 +107,15 @@ async def process_url_endpoint(req: UrlRequest):
             
         text = soup.get_text(separator="\n", strip=True)
         
-        process_document_task.delay(
+        background_tasks.add_task(
+            process_document_task,
             file_bytes=text.encode("utf-8"),
             filename="url.txt",
             business_id=req.business_id,
             source=req.url,
             source_id=req.source_id
         )
-        return {"success": True, "message": "URL enqueued", "source_id": req.source_id}
+        return {"success": True, "message": "URL enqueued via background tasks", "source_id": req.source_id}
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Failed to scrape URL: {str(e)}")
 

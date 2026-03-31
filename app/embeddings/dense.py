@@ -1,12 +1,38 @@
-import os
-from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
+import requests
+from langchain_core.embeddings import Embeddings
+from typing import List
 
-# Use HuggingFace Inference API instead of loading the model locally.
-# This avoids bundling PyTorch/sentence-transformers (~4 GB) into the deployment.
-# The model runs on HuggingFace's servers; we just send text and get back vectors.
-_hf_api_key = os.getenv("HF_API_KEY", "")
+_HF_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+_HF_ROUTER_URL = f"https://router.huggingface.co/hf-inference/models/{_HF_MODEL}/pipeline/feature-extraction"
 
-embeddings = HuggingFaceInferenceAPIEmbeddings(
-    api_key=_hf_api_key,
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+
+class HuggingFaceRouterEmbeddings(Embeddings):
+    """
+    Custom LangChain-compatible embeddings using HuggingFace's new router API.
+    The old api-inference.huggingface.co endpoint was retired (410 Gone).
+    """
+
+    def _embed(self, texts: List[str]) -> List[List[float]]:
+        from app.core.config import settings
+        response = requests.post(
+            _HF_ROUTER_URL,
+            headers={
+                "Authorization": f"Bearer {settings.HF_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={"inputs": texts},
+            timeout=30,
+        )
+        response.raise_for_status()
+        result = response.json()
+        # Router returns [[vec], [vec], ...] for a list of inputs
+        return result
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        return self._embed(texts)
+
+    def embed_query(self, text: str) -> List[float]:
+        return self._embed([text])[0]
+
+
+embeddings = HuggingFaceRouterEmbeddings()
