@@ -5,8 +5,10 @@ from app.ingestion.parsers import parse_file
 from app.ingestion.chunker import text_splitter
 from app.retrieval.vector_store import get_vector_store
 
+import os
+
 # In a real SaaS, this would be loaded from config
-NODE_BACKEND_URL = "http://localhost:5000/api"
+NODE_BACKEND_URL = os.getenv("NODE_BACKEND_URL", "http://localhost:5000/api")
 
 @celery_app.task(bind=True, max_retries=3)
 def process_document_task(self, file_bytes: bytes, filename: str, business_id: str, source: str, source_id: str):
