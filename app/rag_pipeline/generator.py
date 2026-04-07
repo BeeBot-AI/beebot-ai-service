@@ -20,7 +20,7 @@ def generate_answer(query: str, business_id: str, bot_settings: dict) -> dict:
     sources_used = list(set([m.metadata.get("source", "Unknown") for m in matches]))
     
     # 2. Build Prompt
-    system_message = build_prompt(query, matches)
+    system_message = build_prompt(query, matches, bot_settings)
     
     messages = [
         SystemMessage(content=system_message),
