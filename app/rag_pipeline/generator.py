@@ -30,7 +30,7 @@ def generate_answer(query: str, business_id: str, bot_settings: dict) -> dict:
     # 3. Call LLM (Langchain ChatGroq)
     try:
         chat_model = ChatGroq(
-            temperature=0.1,
+            temperature=0.3,
             model_name="llama-3.3-70b-versatile",
             groq_api_key=settings.GROQ_API_KEY,
             max_tokens=1024
